@@ -1,0 +1,54 @@
+.source-list { display:grid; gap:9px; margin-top:20px; }
+.source-card { border:1px solid var(--line); border-radius:5px; padding:15px 17px 13px; background:#fff; }
+.source-card-head { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.source-card-head>div { display:flex; align-items:center; gap:11px; min-width:0; }
+.source-card-head>div>span:last-child { min-width:0; }
+.source-card-head b,.source-card-head small { display:block; }
+.source-card-head b { font-size:12px; }
+.source-card-head small { margin-top:4px; color:#85918a; font-size:10px; line-height:1.5; }
+.source-icon { display:grid; place-items:center; flex:0 0 36px; height:36px; border:1px solid #dfe8df; border-radius:4px; background:#f2f7ef; color:#437553; font-size:8px; font-weight:700; letter-spacing:.3px; }
+.source-icon-website-crawler { background:#f8f3e9; color:#897443; }
+.source-icon-search-provider { background:#edf3f4; color:#507780; }
+.source-icon-google-ads { background:#f9f0e8; color:#9a6c43; }
+.source-icon-meta-ads { background:#f1edf4; color:#756182; }
+.connection-state { flex:0 0 auto; border:1px solid #e4e8df; border-radius:3px; padding:6px 8px; color:#7f8872; background:#fafbf5; font-size:8px; font-weight:700; letter-spacing:.45px; }
+.connection-configured { border-color:#d6e7d9; color:#3f7953; background:#f1f8ef; }
+.connection-mock { border-color:#e9e2c7; color:#8c7b45; background:#fbf8e9; }
+.source-card-foot { display:flex; align-items:flex-start; flex-wrap:wrap; gap:8px; margin:13px 0 0 47px; border-top:1px solid #edf0ec; padding-top:11px; color:#8a968e; font-size:9px; }
+.source-card-foot>span { flex:0 0 auto; padding-top:3px; }
+.source-card-foot>div { display:flex; flex-wrap:wrap; gap:5px; }
+.source-card-foot code,.source-security code { border:1px solid #e5e9e3; border-radius:3px; padding:3px 5px; background:#f8faf7; color:#58685e; font-family:Consolas,"Courier New",monospace; font-size:8px; }
+.source-load-state { border:1px dashed #dce4dc; border-radius:4px; padding:24px; color:#7d8981; background:#fbfcfa; text-align:center; font-size:11px; }
+.source-security { display:flex; align-items:flex-start; gap:11px; margin-top:18px; border-top:1px solid var(--line); padding:16px 2px 24px; }
+.security-mark { display:grid; place-items:center; flex:0 0 28px; height:28px; border-radius:4px; background:#edf4e9; color:#4c7954; font-size:15px; }
+.source-security b { font-size:10px; }
+.source-security p { max-width:700px; margin:5px 0 0; color:#85918a; font-size:9px; line-height:1.6; }
+.competition-breakdown { margin-top:10px; }
+.competition-row-detail { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:47px; border-top:1px solid #edf0ec; padding:8px 0; }
+.competition-row-detail>span { min-width:0; }
+.competition-row-detail b { display:block; font-size:10px; font-weight:600; }
+.competition-row-detail strong { color:#65746a; font-size:9px; font-weight:500; text-align:right; }
+.signal-quality { display:inline-block; margin-top:4px; font-size:7px; font-weight:700; letter-spacing:.55px; }
+.quality-verified { color:#428052; }
+.quality-estimated { color:#9b8145; }
+.quality-missing { color:#9a7771; }
+.research-results,.keyword-metrics { display:grid; gap:6px; margin-top:11px; }
+.research-results article,.keyword-metrics article { border:1px solid #e8ede7; border-radius:3px; padding:9px; background:white; }
+.research-results b,.research-results span,.keyword-metrics b,.keyword-metrics span,.keyword-metrics small { display:block; }
+.research-results b,.keyword-metrics b { color:#43564a; font-size:9px; }
+.research-results span,.keyword-metrics span,.keyword-metrics small { margin-top:4px; color:#88948d; font-size:8px; }
+.research-results p { margin:6px 0 0; color:#77847c; font-size:9px; line-height:1.5; }
+.factor-list b small { display:block; margin-top:3px; color:#929d96; font-size:7px; font-weight:500; text-align:right; }
+@media(max-width:760px) {
+  .source-card { padding:12px; }
+  .source-card-head { align-items:flex-start; flex-direction:column; gap:10px; }
+  .connection-state { margin-left:47px; }
+  .source-card-foot { margin-left:0; }
+  .source-card-foot>span { flex-basis:100%; }
+  .source-security { padding-bottom:18px; }
+  .competition-row-detail { align-items:flex-start; flex-direction:column; gap:4px; }
+  .competition-row-detail strong { text-align:left; }
+  .side-nav { flex-wrap:wrap; }
+  .side-nav .nav-item { flex:1 1 auto; }
+}
+

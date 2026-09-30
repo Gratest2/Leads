@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Niche Radar
 
-## Getting Started
+A Danish clinic opportunity-analysis prototype built with Next.js and TypeScript. It requires no account, payment, external API, or cloud service for the demo.
 
-First, run the development server:
+## Run locally
 
-```bash
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## V1 architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/lib/radar.ts` defines Places, website-crawler, Search, Google Ads, and Meta provider contracts, result shapes, data-quality signals, and mock/unavailable adapters.
+- `src/lib/radar-config.ts` owns the editable opportunity-score weights (25/25/15/15/10/5/5).
+- `src/app/api/data-sources/route.ts` reports whether required environment variables are present without returning secret values.
+- `src/app/radar-app.tsx` owns the scan, profile, and dashboard flow. Approved treatments and scan results are saved in browser `localStorage`.
+- Suggested treatments remain pending until explicitly approved. Scores normalize over available signals only; missing signals are excluded and lower the separate data-confidence percentage.
+- Local clinic count, website-topic coverage, Search competition, Google Ads competition, and Meta ad competition are stored as separate signals.
+- `BrowserKeywordPlannerCache` caches Keyword Planner responses in browser storage for 24 hours. `CrawlOptions` requires robots.txt compliance, same-origin links, a page limit, and a minimum delay.
+- Google result counts and monthly keyword volume are separate measurements.
 
-## Learn More
+## Demo data and integrations
 
-To learn more about Next.js, take a look at the following resources:
+Website analysis and competitor discovery are mocked. The illustrative competitor list is test data, not verified local businesses, and loads only when a scan is run. Search, Google Ads, and Meta responses are unavailable until provider implementations and access are configured.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Data Sources page shows `Nøgler konfigureret` when the required environment variables exist; this does not test credentials or imply a live provider is connected. Use `.env.example` as a local template and never commit `.env.local`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Real competitor discovery needs a Places implementation. Public-page analysis needs a crawler that obeys `robots.txt` and rate limits. Search-result counts need a legitimate Search API, monthly keyword metrics need Google Ads API access and OAuth authorization, and Meta Ad Library access may be restricted. Implement providers behind their interfaces; the app remains usable with the mock or unavailable adapters.
 
-## Deploy on Vercel
+## Checks
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```powershell
+npm run lint
+npm run build
+```
